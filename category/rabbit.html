@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+			}
+			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+		</style>
+	</head>
+
+	<body>
+		<div id="info">
+		</div>
+
+		<script src="js/three.js"></script>
+
+		<script src="js/controls/TrackballControls.js"></script>
+
+		<script src="js/loaders/VTKLoader.js"></script>
+
+		<script src="js/Detector.js"></script>
+		<script src="js/stats.js"></script>
+
+<script>
+
+    class initTree{
+        constructor() {
+            this.initCamera();
+            this.initScene();
+            this.initLight();
+            this.initObject();
+            this.initThree('canvas-frame');
+        }
+        animation(){
+            this.renderer.render( this.scene,  this.camera);
+        }
+        initThree(id) {
+            this.renderer = new THREE.WebGLRenderer( { antialias: false } );
+            this.renderer.setClearColorHex( 0x000000, 1 );
+            this.renderer.setSize( window.innerWidth, window.innerHeight );
+
+            var container = document.createElement( 'div' );
+            document.body.appendChild( container );
+            container.appendChild( this.renderer.domElement );
+        }
+        initCamera() {
+            this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 1e10 );
+            this.camera.position.z = -0.2
+            // 
+            this.controls = new THREE.TrackballControls( this.camera );
+            this.controls.rotateSpeed = 5.0;
+            this.controls.zoomSpeed = 5;
+            this.controls.panSpeed = 2;
+            this.controls.noZoom = false;
+            this.controls.noPan = false;
+            this.controls.staticMoving = false;
+            this.controls.dynamicDampingFactor = 0.3;
+
+        }
+        initScene() {
+            this.scene = new THREE.Scene();
+            this.scene.add( this.camera );
+        }
+        initLight() {
+            var dirLight = new THREE.DirectionalLight( 0xffffff );
+            dirLight.position.set( 200, 200, 1000 ).normalize();
+
+            this.camera.add( dirLight );
+            this.camera.add( dirLight.target );
+        }
+        initObject() {
+            var _this = this
+            // FrontSide DoubleSide  BackSide
+            var material = new THREE.MeshLambertMaterial( { color:0xffffff, side: THREE.DoubleSide } );
+            var loader = new THREE.VTKLoader();
+            loader.addEventListener( 'load', function ( event ) {
+                var geometry = event.content;
+                // geometry.size(100,100,100)
+                var mesh = new THREE.Mesh( geometry, material );
+                mesh.position.set(0,0,0)
+                _this.scene.add( mesh );
+            
+            } ,function(progress){
+                console.log(progress)
+            });
+            loader.load( "model/buny.vtk" );
+        }
+    }
+
+    var start = new initTree()
+    function freshCanvas(){
+        start.animation()
+        start.controls.update();
+        requestAnimationFrame( freshCanvas );
+    }
+    freshCanvas()
+
+</script>
+
+	</body>
+</html>

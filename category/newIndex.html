@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>    
+        <title>山东省3D</title>    
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">   
+        <script src="./js/echarts.3.8.0.min.js"></script>    
+        <script src="js/echarts-gl.js"></script>    
+        <!-- <script src="guangdong.js"></script> -->
+        <script type="text/javascript" src="js/map/js/province/shandong.js"></script>
+    <style type="text/css">
+        #main {
+            width:100%;
+            border:2px solid green;
+            height: 500px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="main"></div>
+    <script type="text/javascript">
+var data = [
+    {name: '青岛', value: 50},
+    {name: '济南', value: 50},
+    {name: '莱芜', value: 30},
+    {name: '菏泽', value: 40},
+    {name: '临沂', value: 80},
+];
+var geoCoordMap = {
+    '青岛':[120,36],
+    '济南':[117,36],
+    "莱芜":[117.67,36.19],
+    "菏泽":[115.43,35.24],
+    "临沂":[118.35,35.05]
+};
+
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push({
+                name: data[i].name,
+                value: geoCoord.concat(data[i].value)
+            });
+        }
+    }
+    return res;
+};
+
+
+// var city=[
+//             {name:'济南市',value:[123,'idc']},
+//             {name:'青岛市',value:[123,'idc']},
+//             {name:'淄博市',value:[123,'idc']},
+//             {name:'枣庄市',value:[123,'idc']},
+//             {name:'东营市',value:[123,'idc']},
+//             {name:'烟台市',value:[123,'idc']},
+//             {name:'潍坊市',value:[123,'idc']},
+//             {name:'济宁市',value:[123,'idc']},
+//             {name:'泰安市',value:[123,'idc']},
+//             {name:'威海市',value:[123,'idc']},
+//             {name:'日照市',value:[123,'idc']},
+//             {name:'滨州市',value:[123,'idc']},
+//             {name:'德州市',value:[123,'idc']},
+//             {name:'聊城市',value:[123,'idc']},
+//             {name:'临沂市',value:[123,'idc']},
+//             {name:'菏泽市',value:[123,'idc']},
+//             {name:'莱芜市',value:[123,'idc']}
+//         ]
+        var chart = echarts.init(document.getElementById('main'));
+        var min=0,max=300;
+        var option = {
+            tooltip:{
+                formatter:function(params){
+                    var content='',
+                    content=params.name+params.value[0]+params.value[1];
+                    return content;
+                },
+            },
+
+            visualMap: {
+                show: false,
+                min: min,
+                max: max,
+                color:"#f00",
+                calculable:true
+            },
+
+            geo: {
+              map: '山东',
+              zoom:1,
+              label: {
+                normal: {
+                  show: true,
+                  textStyle: {
+                    fontSize: 16,
+                    color: '#ccc'
+                    }
+                  },
+                emphasis: {
+                  show: false,
+                  textStyle: {
+                    color: '#ccc'
+                  }
+                }
+                },
+              roam: false,
+            },
+            series: [
+            {
+                name: '航运起点',
+                type: 'graph',
+                coordinateSystem: 'geo',
+//                 layout: 'none',
+                data: convertData(data),
+                links: [{
+                        source: '青岛',
+                        target: '菏泽'
+                    },{
+                        source: '临沂',
+                        target: '菏泽'
+                    },{
+                        source: '青岛',
+                        target: '济南'
+                    },
+    
+
+                ],
+                roam: true,
+                focusNodeAdjacency: true,
+                itemStyle: {
+                    normal: {
+                        borderColor: '#fff',
+                        borderWidth: 1,
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.3)'
+                    }
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        show: true
+                    }
+                },
+                lineStyle: {
+                    color: '#f00',
+                    curveness: 500
+                },
+                emphasis: {
+                    lineStyle: {
+                        width: 2
+                    }
+                }
+             }
+            ]
+        }
+        chart.setOption(option);
+        chart.on('click', function (params) {
+            var cout=params.data.name;
+
+            //window.open('https://www.baidu.com');
+            console.log(params);
+        });
+    </script>
+</body>
+</html>

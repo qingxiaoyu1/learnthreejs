@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html style="font-size: 100px;">
+<head>
+  <meta charset="UTF-8">
+  <title>国家疫情防控物资工业大数据公共服务平台</title>
+  <script type="text/javascript">
+    document.write("<link rel='stylesheet' type='text/css' href='css/index.css?random=" + Math.random() + "' />");
+  </script>
+  <script>
+    localStorage.setItem('windowWidth', document.documentElement.clientWidth)
+  </script>
+  <script src="js/mineRem.js"></script>
+<body>  
+    
+<div class="content_body">
+  <div class="logo_nav">
+    <div class="boxTitle">国家疫情防控物资工业大数据公告服务平台</div>
+    <div class="boxTime">2020-02-10</div>
+    <img src="./img/title_nav.png">
+  </div>
+  
+  <div class="center_box">
+    
+    <div class="left_data">
+
+      
+
+
+      <div class="out_border" >
+        <div class="border_title">物资分类列表</div>
+        <div class="hideScroll">
+        <div class="border_content"style="overflow: auto;    height: 100%;
+        width: 107%;" >
+            <div class="toggle">
+              <dl>
+                
+
+              </dl>
+            </div>
+        </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="centen_data">
+        <div class=" special_pos right_data">
+          <div class="oneline">
+              <div class="each_icon">
+                  <span class="ruzhuNum">今日计划产能总计</span>
+                  <span class="data_num" id="leiji">100 <span>件</span></span>
+                </div>
+                <div class="each_icon center_title">
+                    <span class="platformView">今日产品库存总计</span>
+                    <span class="data_num" id="shishi">1,352,650 <span>件</span></span>
+                </div>
+                <div class="each_icon">
+                    <span class="platformView">今日设备总需求</span>
+                    <span class="data_num" id="shishi">1,352,650 <span>台</span></span>
+                </div>
+          </div>
+          <div class="oneline">
+              <div class="each_icon">
+                  <span class="ruzhuNum">今日实际产能总计</span>
+                  <span class="data_num" id="leiji">0 <span>件</span></span>
+                </div>
+                <div class="each_icon center_title">
+                    <span class="platformView">今日原材料总缺口</span>
+                    <span class="data_num" id="shishi">1,352,650 <span>吨</span></span>
+                </div>
+                <div class="each_icon">
+                    <span class="platformView">今日人员总需求</span>
+                    <span class="data_num" id="shishi">1,352,650 <span>个</span></span>
+                </div>
+          </div>
+          <div class="threeButton">
+            <div class="eachButtons select">原材料</div>
+            <div class="eachButtons">库存</div>
+            <div class="eachButtons">产能</div>
+          </div>
+        </div>
+        <div id="chinaMap">
+      
+        </div>
+    </div>
+    
+
+    
+
+    <div class="bottom_data">
+      <div class="out_border">
+        <div class="border_title">每日产能态势图</div>
+        <div class="border_content" id="rightChart1">
+          
+        </div>
+      </div>
+      <div class="out_border">
+          <div class="border_title">每日库存态势图</div>
+          <div class="border_content" id="rightChart2">
+            
+          </div>
+        </div>
+
+
+      <div class="out_border">
+          <div class="border_title posrela">需求态势图
+              <div class="threeButton">
+                  <div class="eachButtons select">原材料</div>
+                  <div class="eachButtons">设备</div>
+                  <div class="eachButtons">人员</div>
+              </div>
+          </div>
+          <div class="border_content" id="rightChart3">
+            
+          </div>
+        </div>
+
+      
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/china.js"></script>
+
+
+<script type="text/javascript" src="js/rollNumber.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script src="js/api.js"></script>
+<script src="js/rightEcharts.js"></script>
+<script src="js/leftEcharts.js"></script>
+
+<script type="text/javascript" src="js/map/js/province/anhui.js"></script>
+<script type="text/javascript" src="js/map/js/province/aomen.js"></script>
+<script type="text/javascript" src="js/map/js/province/beijing.js"></script>
+<script type="text/javascript" src="js/map/js/province/chongqing.js"></script>
+<script type="text/javascript" src="js/map/js/province/fujian.js"></script>
+<script type="text/javascript" src="js/map/js/province/gansu.js"></script>
+<script type="text/javascript" src="js/map/js/province/guangdong.js"></script>
+<script type="text/javascript" src="js/map/js/province/guangxi.js"></script>
+<script type="text/javascript" src="js/map/js/province/guizhou.js"></script>
+<script type="text/javascript" src="js/map/js/province/hainan.js"></script>
+<script type="text/javascript" src="js/map/js/province/hebei.js"></script>
+<script type="text/javascript" src="js/map/js/province/heilongjiang.js"></script>
+<script type="text/javascript" src="js/map/js/province/henan.js"></script>
+<script type="text/javascript" src="js/map/js/province/hubei.js"></script>
+<script type="text/javascript" src="js/map/js/province/hunan.js"></script>
+<script type="text/javascript" src="js/map/js/province/jiangsu.js"></script>
+<script type="text/javascript" src="js/map/js/province/jiangxi.js"></script>
+<script type="text/javascript" src="js/map/js/province/jilin.js"></script>
+<script type="text/javascript" src="js/map/js/province/liaoning.js"></script>
+<script type="text/javascript" src="js/map/js/province/neimenggu.js"></script>
+<script type="text/javascript" src="js/map/js/province/ningxia.js"></script>
+<script type="text/javascript" src="js/map/js/province/qinghai.js"></script>
+<script type="text/javascript" src="js/map/js/province/shandong.js"></script>
+<script type="text/javascript" src="js/map/js/province/shanghai.js"></script>
+<script type="text/javascript" src="js/map/js/province/shanxi.js"></script>
+<script type="text/javascript" src="js/map/js/province/shanxi1.js"></script>
+<script type="text/javascript" src="js/map/js/province/sichuan.js"></script>
+<script type="text/javascript" src="js/map/js/province/taiwan.js"></script>
+<script type="text/javascript" src="js/map/js/province/tianjin.js"></script>
+<script type="text/javascript" src="js/map/js/province/xianggang.js"></script>
+<script type="text/javascript" src="js/map/js/province/xinjiang.js"></script>
+<script type="text/javascript" src="js/map/js/province/xizang.js"></script>
+<script type="text/javascript" src="js/map/js/province/yunnan.js"></script>
+<script type="text/javascript" src="js/map/js/province/zhejiang.js"></script>

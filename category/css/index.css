@@ -1,0 +1,288 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
+  background-color: #060c2b !important;
+  font-family:  '微软雅黑';
+  line-height: 1.5;
+}
+.content_body{
+  height: 100%;
+  position: relative;
+  overflow:hidden;
+  background: url('../img/center_bg2.png') center 0 no-repeat;
+  background-size: 100% 100%;
+}
+/*标题img图片*/
+.logo_nav{
+  height: 1.4rem;
+  vertical-align: top;
+  position: relative;
+}
+.logo_nav img{
+  width: 100%;
+}
+.center_box{
+  height: calc(100% - 160px);
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+}
+#chinaMap{
+}
+#chinaMap{
+  flex:5;
+  
+}
+.right_data{
+  display: flex;
+  z-index: 9;
+}
+.right_data .each_icon{
+  display: flex;
+  font-size: 0.2rem;
+  flex-direction: column;
+  line-height: 1.5;
+  text-align: left;
+  min-width: 24%;
+}
+.right_data .each_icon .data_title{
+  background: url('../img/icon1.png') 0.08rem center no-repeat;
+  background-size: auto;
+  font-size: 0.2rem;
+  height: 1rem;
+  color: #40C6FF;
+  padding-left: 0.36rem;
+}
+.right_data .each_icon .ruzhuOrg{
+  background: url('../img/icon2.png') 0.05rem center no-repeat;
+  background-size: auto ;
+   padding-left: 0.36rem;
+}
+.right_data .each_icon .ruzhuPeop{
+  background: url('../img/icon3.png') 0.05rem center no-repeat;
+  background-size: auto ;
+   padding-left: 0.36rem;
+}
+.right_data .each_icon .ruzhuNum{
+  background-size: auto;
+  color: #46D3FA;
+  font-size: 0.14rem;
+}
+.right_data .each_icon .platformView{
+      color: #46D3FA;
+      background-size: auto;
+      font-size: 0.14rem;
+}
+.right_data .each_icon .data_num{
+  font-size: 0.38rem;
+  color: #FEFEFE;
+}
+
+
+.left_data{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.out_border{
+  height: 100%;
+  width: 100%;
+}
+.out_border {
+  position: relative;
+  position: relative;
+  /* padding-bottom: 10px; */
+  border: 1px solid #112c3f;
+  padding: 10px 10px 5px 10px;
+  margin-bottom: 10px;
+}
+.out_border:last-child{
+  margin-bottom:0px;
+}
+.border_line{
+  position: absolute;
+  width: 14px;
+  height: 14px;
+}
+.border_title{
+  height:0.4rem;
+  line-height: 0.34rem;
+  font-size: 0.16rem;
+  text-indent: 0.2rem;
+  background: url("../img/title.png") no-repeat 0 103%;
+  background-size: 100%;
+  padding: 0 0 0.18rem 0;
+}
+.line_special1{
+  top:0;
+  left:0;
+  border-top: 1px solid #868794;
+  border-left: 1px solid #868794;
+}
+.line_special2{
+  top:0;
+  right:0;
+  border-top: 1px solid #868794;
+  border-right: 1px solid #868794;
+}
+.line_special3{
+  bottom:0;
+  left:0;
+  border-bottom: 1px solid #868794;
+  border-left: 1px solid #868794;
+}
+.line_special4{
+  bottom:0;
+  right:0;
+  border-bottom: 1px solid #868794;
+  border-right: 1px solid #868794;
+}
+ .border_content{
+}
+/*底部样式*/
+.bottom_data{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 0.2rem;
+}
+.bottom_data .out_border{
+  flex: 1;
+}
+.bottom_data .out_border:last-child{
+  margin-right:0rem;
+}
+
+.bottom_data .border_content table{
+  width: 100%;
+  text-align: center;
+}
+.bottom_data .border_content th{
+  font-size: 0.12rem;
+  color:#40C6FF;
+  height:0.35rem;
+  line-height: 0.35rem;
+}
+.bottom_data .border_content td{
+  font-size: 0.12rem;
+  color:#fff;
+  height:0.32rem;
+  line-height: 0.32rem;
+}
+.bottom_data .border_content tr:nth-child(2n+1) td,.bottom_data .border_content tr:nth-child(2n+1) th{
+  background: rgba(255,255,255,0.03);
+}
+.clickChange span{
+  cursor: pointer;
+}
+.clickChange span{
+  color:rgba(255,255,255,0.55);
+}
+.clickChange span.selectClass{
+  color:rgba(255,255,255,1);
+}
+.centen_data{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.special_pos{
+  flex: 2;
+  line-height: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.boxTitle {
+    position: absolute;
+    text-align: center;
+    font-size: 0.3rem;
+    width: 100%;
+    top: 0.3rem;
+}
+.boxTime{
+  position: absolute;
+  text-align: center;
+  font-size: 0.17rem;
+  width: 100%;
+  bottom: 0.15rem;
+  color: #d0d4d9;
+}
+.oneline {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+}
+.each_icon.center_title {
+    margin: 0 0.8rem;
+}
+.data_num span{
+  font-size: 0.16rem;
+}
+
+.toggle {width: 100%;margin:20px auto;}
+.toggle dl dt {height: 0.4rem;line-height: 0.4rem;font-size: 0.18rem;color: #fff;cursor:pointer;margin:8px 0;padding-left:25px;display:block;background: url("../img/down.png") rgba(32, 47, 88,0.2) no-repeat  3.7rem center;}
+.toggle dl dt.current {color: #40c6ff;background: url("../img/up.png")  rgba(32, 47, 88,0.2) no-repeat 3.7rem center;}
+.toggle dl dd { padding-left:10px; line-height:24px;display: none; }
+.toggle dl dd h2 { font-size:15px; }
+.toggle dl dd ul { padding-bottom:12px; }
+.toggle dl dd ul li {list-style:decimal inside none;font-size: 12px;list-style: none;padding: 5px 0 5px 50px;color: rgba(255,255,255,0.6);background: url("../img/icon.png") no-repeat 35px center;}
+
+.special_pos .threeButton{
+  position: absolute;
+  left:0.5rem;
+  bottom: -0.4rem;
+  height: 0.3rem;
+}
+.special_pos .eachButtons.select{
+  background: #0375a6;
+}
+.eachButtons{
+  display: inline-block;
+  padding: 5px 20px;
+  background: rgba(3,117,166,0.3);
+  color:rgba(255,255,255,0.6);
+  cursor: pointer;
+  line-height: 1.5;
+  font-size: 0.14rem;
+  margin-right: 10px;
+  border-radius: 4px;
+  float: left;
+}
+.hideScroll {
+    width: 100%;
+    height: calc(100% - 62px);
+    overflow: hidden;
+}
+.bottom_data .border_content{
+  height: calc(100% - 62px);
+}
+.posrela{
+  position: relative;
+}
+.posrela .threeButton {
+  position: absolute;
+  right: 0;
+  top:0;
+  text-align: center;
+  text-indent: 0
+}
+.posrela .eachButtons.select {
+  background: #0375a6;
+}
+.clickadd{
+  cursor: pointer;
+}

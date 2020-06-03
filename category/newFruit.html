@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html style="font-size:100px;">
+<head>    
+    <title>大规模定制</title>    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">   
+    <script type="text/javascript" src="./js/jquery.min.js"></script>    
+    <script type="text/javascript">
+        document.write("<link rel='stylesheet' type='text/css' href='css/indexFruie.css?random=" + Math.random() + "' />");
+          /* eslint-disable no-undef */
+        function resizeWin(doc, win) {
+            /* eslint-disable no-undef */
+            var docEl = doc.documentElement
+            var resizeEvt = ('orientationchange' in window ? 'orientationchange' : 'resize')
+            var recalc = function () {
+                var clientWidth = docEl.clientWidth || localStorage.getItem('windowWidth')
+                if (clientWidth <= 1024) {
+                clientWidth = 1024
+                }
+                if (!clientWidth) return
+                docEl.style.fontSize = 100 * (clientWidth / 1920) + 'px'
+                var varMinh = parseInt(clientWidth / 1920*1080)
+                varMinh = varMinh > 1080?1080:varMinh;
+                $("body,html").css("minHeight",varMinh)
+            }
+            // 1920*1080
+
+            if (!doc.addEventListener) return
+            win.addEventListener(resizeEvt, recalc, false)
+            doc.addEventListener('DOMContentLoaded', recalc, false)
+            
+            /* eslint-enable no-undef */
+        }
+        resizeWin(document, window)
+        
+    </script>
+     
+     
+     <script type="text/javascript" src="./js/echarts.min.4.2.js"></script>    
+     <script type="text/javascript" src="./js/echarts-gl.js"></script>    
+     <script type="text/javascript" src="./js/map/js/province/shandong.js"></script>
+
+     <!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
+     <link rel="stylesheet" href=" https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     
+</head>
+<body>
+    <div class="topLogo">
+        <img src="./img/topLogo.png" alt="">
+    </div>
+    <div  class="content">
+        <div class="item content_left">
+            <div class="left_1">
+                <div class="itemTitle">用户画像</div>
+                <div class="contentbox firstContent" style="left:0.2rem;right:0.2rem;">
+                        
+                </div>
+
+
+                
+            </div>
+            <div class="left_2">
+                <div class="itemTitle">需求信息</div>
+                <div class="contentbox">
+                    <div class="row_flex tab_change leftThree" style="width: 65%;margin:0.1rem auto">
+                        <div idClick="1" class="oneButton ">总趋势</div>
+                        <div idClick="2" class="oneButton">品类趋势</div>
+                        <div idClick="3" class="oneButton">销售预测</div>
+                    </div>
+                    <select name="choice" id="selectChoice" ></select>
+                    <div class="get_all" id="echartsGet"></div>
+                    <div class="showTabel">
+                        <div class="todayShow" >2020-03-10日销售预测</div>
+                        <div class="outTable">
+                            
+                                <table>
+                            
+                                        <tr class="tabelAfter">
+                                            <td>产品</td><td>预测销量</td>
+                                        </tr>
+                                   
+                                </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item content_center">
+            <img src="./img/top_title.png" class="topImg" alt="">
+            <img src="./img/center_icon.png" class="center_icon" alt="">
+            <img src="./img/center_map.png" class="center_map" alt="">
+            <div class="left_1 center1">
+                <div class="itemTitle" style="line-height: 2.4;">物联信息</div>
+                <div class="contentbox" id="getGuizi">
+                    <div class="one_line_but listHtml">
+                        
+                    </div>
+                    <div class="one_line_text">
+                        
+                    </div>
+                    <div class="row_flex threeM">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item content_right">
+                <div class="left_1 right_1">
+                        <div class="itemTitle">物流信息</div>
+                        <div class="contentbox">
+                                <div  class="car_icon" >
+                                        <img src="./img/car.png"alt="">
+                                    </div>
+                                   
+                                    <div class="left1_center">
+                                        车牌号:<span id="yunsong1">鲁B***1</span><br>
+                                        联系方式:<span  id="yunsong2">136****5689</span>
+                                    </div>
+                                    <div class="left_box">
+                                        <div class="map_icon">
+                                            <div class="small_title">出发地  </div>
+                                            <div class="bot_content">
+                                                <span  id="yunsong3">寿光蔬菜基地</span><br>
+                                                <span id="yunsong4">已出发</span><br>
+                                                <span id="yunsong5">2020-03-10 13:20</span>
+                                            </div>
+                                        </div>
+                                        <div class="map_icon">
+                                            <div class="small_title">到达地</div>
+                                            <div class="bot_content">
+                                                <span id="yunsong6">寿光蔬菜基地</span><br>
+                                                <span id="yunsong7">已到达</span><br>
+                                                <span id="yunsong8">2020-03-10 13:20</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                        
+                    
+                    </div>
+                    <div class="left_2 right_2">
+                        <div class="itemTitle">产地信息</div>
+                        <div class="left_box contentbox">
+                            <div class="box">
+                                <div class="small_title"><img src="./img/lefttitle.png" alt=""><span class="placeName">平均客单价</span><img src="./img/righttitle.png" alt=""></div>
+                            </div>
+                            <div class="row_flex tab_change rightTwo" style="text-align: center">
+                                <div  class="oneButton" id="chandione"  style="width:100%;">供应预测160万斤</div>
+                            </div>
+                           
+                                    <div class="row_flex">
+                                            <div class="one_icon">
+                                                <img src="./img/newiicon1.png" alt=""><br><span id="chandi1">25℃</span></br>温度
+                                            </div>
+                                            <div class="one_icon">
+                                                <img src="./img/newiicon2.png" alt=""><br><span id="chandi2">90%</span></br>湿度
+                                            </div>
+                                            <div class="one_icon">
+                                                <img src="./img/newiicon3.png" alt=""><br><span id="chandi3">9000lux</span></br>光照
+                                            </div>
+                                        </div>
+                                        <div class="blue_title">
+                                            土壤传感器检测情况
+                                            <img src="./img/topIcon.png" alt="">
+                                        </div>
+                                        <div class="row_flex">
+                                            <div class="one_bubble">
+                                                <div class="text_style"><span id="chandi4">25℃</span></br>土壤温度</div>
+                                                
+                                            </div>
+                                            <div class="one_bubble">
+                                                    <div class="text_style"><span id="chandi5">25%</span></br>土壤湿度</div>
+                                            </div>
+                                            <div class="one_bubble">
+                                                    <div class="text_style"><span id="chandi6">25us/cm</span></br>土壤电导率</div>
+                                            </div>
+                                        </div>
+                                        <div class="blue_title blue_title1">
+                                                水质传感器检测情况
+                                                <img src="./img/topIcon.png" alt="">
+                                            </div>
+                                        <div class="row_flex">
+                                            <div class="one_bubble one_bubble1">
+                                                <div class="text_style"><span id="chandi7">11us/cm</span></br>水质电导率</div>
+                                                
+                                            </div>
+                                            <div class="one_bubble one_bubble1">
+                                                    <div class="text_style"><span id="chandi8">6.3 mol.l-1</span></br>PH值</div>
+                                            </div>
+                                        </div>
+                            
+                        
+                            
+                        </div>
+                       
+                    </div>
+        </div>
+    </div>
+    <script src="./js/newData.js"></script>
+    <script type="text/javascript">
+        var baseUrl = "http://haiyouhe.api.shanghai.cosmoplat.com"
+        $.ajax({
+            url:baseUrl+"/smartArk/getSmartArkInfo",
+            type:"get",
+            success:function(getData){
+                var listArray = getData.data
+                var nowData = {}
+                var nameArray = []
+                var htmlArray = []
+                // var a = 'sdadsad'
+                
+                // a.substring(a.length-4)
+                for(var i in listArray){
+                    if(listArray[i]["id"]){
+                        nowData[listArray[i]["id"]] = listArray[i]
+                        htmlArray.push(`<div class="ont_button" getId="${listArray[i]["id"]}">${listArray[i]["dtName"]}</div>`)
+                    }
+                }
+                $("#getGuizi .listHtml").html(htmlArray.join(""))
+                $("#getGuizi .listHtml .ont_button").click(function(){
+                    $("#getGuizi .ont_button").removeClass("selectButtons")
+                    $(this).addClass("selectButtons")
+                    // 改变下面的选中信息
+                    if(nowData[$(this).attr("getId")]){
+                        var getData = nowData[$(".selectButtons").attr("getId")]
+                        var kaiji = ["关机","开机"]
+                        $("#getGuizi .one_line_text").html(`<span>当前温度:${getData["tmp"]}℃</span>
+                            <span>压缩机:${kaiji[getData["comp"]]}</span>
+                            <span>风机:${kaiji[getData["efan"]]}</span>
+                            <span>照明开关:${kaiji[getData["light"]]}</span>
+                            <span>制热机:${kaiji[getData["heatEngine"]]}</span>
+                            <span>自动关门时间:${getData["closeTimeSet"]}s</span>`)
+ 
+                        var baojing = ["无","称台失联(紧急)","称台超重",'称台零点异常','称台重量异常','称台重量不稳','称台数据突变', '称台单次取货数据突变','未知异常[8]']
+                        $("#getGuizi .threeM").html(`<div class="one_bubble">
+                            <div class="text_style"><span>库存:${getData["cell1Weight"]}g</span></div>
+                                <div class="text_style"><span>报警信息：${baojing[getData["cell1Alarm"]]}</span></div>
+                            </div>
+                            <div class="one_bubble">
+                                    <div class="text_style"><span>库存:${getData["cell2Weight"]}g</span></div>
+                                    <div class="text_style"><span>报警信息：${baojing[getData["cell2Alarm"]]}</span></div>
+                            </div>
+                            <div class="one_bubble">
+                                    <div class="text_style"><span>库存:${getData["cell3Weight"]}g</span></div>
+                                    <div class="text_style"><span>报警信息：${baojing[getData["cell3Alarm"]]}</span></div>
+                            </div>`)
+                    }
+                })
+                $("#getGuizi .listHtml .ont_button").eq(0).click()
+                setInterval(function(){
+                    freshData()
+                },5000)
+                
+            }   
+        })
+        function addImg(number){
+            number = parseInt(number)
+            var imgHtml = []
+            for(var i=0;i<number;i++){
+                imgHtml.push(`<img src="./img/star.png">`)
+            }
+            return imgHtml
+        }
+        function freshData(){
+            $.ajax({
+            url:baseUrl+"/smartArk/getSmartArkInfo",
+            type:"get",
+            success:function(getDatas){
+                var listArray = getDatas.data
+                var nowData = {}
+                var nameArray = []
+                // var a = 'sdadsad'
+                 // a.substring(a.length-4)
+                 for(var i in listArray){
+                    if(listArray[i]["id"]){
+                        nowData[listArray[i]["id"]] = listArray[i]
+                    }
+                }
+                // 改变下面的选中信息
+                if(nowData[$(".selectButtons").attr("getId")]){
+                    var getData = nowData[$(".selectButtons").attr("getId")]
+                    var kaiji = ["关机","开机"]
+                    $("#getGuizi .one_line_text").html(`<span>当前温度:${getData["tmp"]}℃</span>
+                        <span>压缩机:${kaiji[getData["comp"]]}</span>
+                        <span>风机:${kaiji[getData["efan"]]}</span>
+                        <span>照明开关:${kaiji[getData["light"]]}</span>
+                        <span>制热机:${kaiji[getData["heatEngine"]]}</span>
+                        <span>自动关门时间:${getData["closeTimeSet"]}s</span>`)
+
+                    var baojing = ["无","称台失联(紧急)","称台超重",'称台零点异常','称台重量异常','称台重量不稳','称台数据突变', '称台单次取货数据突变','未知异常[8]']
+                    $("#getGuizi .threeM").html(`<div class="one_bubble">
+                        <div class="text_style"><span>库存:${getData["cell1Weight"]}g</span></div>
+                            <div class="text_style"><span>报警信息：${baojing[getData["cell1Alarm"]]}</span></div>
+                        </div>
+                        <div class="one_bubble">
+                                <div class="text_style"><span>库存:${getData["cell2Weight"]}g</span></div>
+                                <div class="text_style"><span>报警信息：${baojing[getData["cell2Alarm"]]}</span></div>
+                        </div>
+                        <div class="one_bubble">
+                                <div class="text_style"><span>库存:${getData["cell3Weight"]}g</span></div>
+                                <div class="text_style"><span>报警信息：${baojing[getData["cell3Alarm"]]}</span></div>
+                        </div>`)
+                }
+            }   
+        })
+        }
+        $.ajax({
+            url:baseUrl+"/user",
+            type:"get",
+            success:function(getData){
+                var showData = getData.data
+                var item = []
+
+
+                // var userMobile = showData["userMobile"]
+                // var newMobile = userMobile.substring(0,3)+"****"+ userMobile.substring(userMobile.length-4,userMobile.length)
+                // $("#user1").html(newMobile)
+                // $("#user2").html(showData["productPreferences"].join(",") || "无偏好").attr("title",showData["productPreferences"].join(",") || "无偏好")
+                // var purchaseFrequency = showData["purchaseFrequency"] ||"0"
+                // $("#user3").html(purchaseFrequency+"次/周")
+                // var price = showData["averageUnitPrice"] ||"0"
+                // $("#user4").html(price +"元")
+                // $("#user5").html(showData["lastBuyingTime"]||"无记录") 
+
+
+
+                for(var i in showData){
+                    var user1 = showData[i]["userMobile"]
+                    var user2 = showData[i]["productPreferences"].join(",") || "无偏好"
+                    var user3 = showData[i]["purchaseFrequency"] ||"0"
+                    var user4 = showData[i]["averageUnitPrice"] ||"0"
+                    var user5 = showData[i]["lastBuyingTime"]||"无记录"
+                    var user6 = showData[i]["otherAdvice"]||"无"
+                    
+                    var addItem =""
+                    if(i == 0){
+                        addItem = "active"
+                    }
+                    debugger
+                    item.push(`<div class="item  ${addItem}">
+                                        <div class="left1_center">用户:<span id="user1">${user1}</span></div>
+                                        <div class="left_box">
+                                            <div class="box special">
+                                                <table style="width: 100%;">
+                                                    <tr>
+                                                        <th><div class="oneLineNew">产品偏好</div></th>
+                                                        <th><div class="oneLineNew">购买频次</div></th>
+                                                        <th><div class="oneLineNew">平均客单价</div></th>
+                                                        <th><div class="oneLineNew">上次购买时间</div></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td title="${user2}"><div class="oneLineNew">${user2}</div></td>
+                                                        <td title="${user3}"><div class="oneLineNew">${user3}</div></td>
+                                                        <td title="${user4}"><div class="oneLineNew">${user4}</div></td>
+                                                        <td title="${user5}"><div class="oneLineNew">${user5}</div></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+                                            <div class="box">
+                                                <div class="small_title"><img src="./img/lefttitle.png" alt=""><span>商品评价</span><img src="./img/righttitle.png" alt=""></div>
+                                                <div class="twoLineContent">
+                                                    <div class="startItem">    
+                                                        商品品质<br>
+                                                        ${addImg(showData[i]["productEvaluation"]["productQuantity"]).join("")}
+                                                    </div>
+                                                    <div class="startItem">    
+                                                        丰富程度<br>
+                                                        ${addImg(showData[i]["productEvaluation"]["richDegree"]).join("")}
+                                                    </div>
+                                                    <div class="startItem">    
+                                                        满意程度<br>
+                                                        ${addImg(showData[i]["productEvaluation"]["satisfactionDegree"]).join("")}
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            <div class="box">
+                                                <div class="small_title"><img src="./img/lefttitle.png" alt=""><span>购买频次</span><img src="./img/righttitle.png" alt=""></div>
+                                                <div class="twoLineContent">
+                                                    <div class="startItem">    
+                                                        操作简单<br>
+                                                        ${addImg(showData[i]["buyingExperience"]["easeOfOperation"]).join("")}
+                                                    </div>
+                                                    <div class="startItem">    
+                                                        称重准确<br>
+                                                        ${addImg(showData[i]["buyingExperience"]["weigthingAccuracy"]).join("")}
+                                                    </div>
+                                                    <div class="startItem">    
+                                                        保鲜程度<br>
+                                                        ${addImg(showData[i]["buyingExperience"]["freshDegree"]).join("")}
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            <div class="box">
+                                                <div class="small_title"><img src="./img/lefttitle.png" alt=""><span>服务评价</span><img src="./img/righttitle.png" alt=""></div>
+                                                <div class="twoLineContent">
+                                                    <div class="startItem">    
+                                                        服务评价<br>
+                                                        ${addImg(showData[i]["serviceEvaluation"]["replenishmentSpeed"]).join("")}
+                                                    </div>
+                                                    <div class="startItem">    
+                                                        退款效率<br>
+                                                        ${addImg(showData[i]["serviceEvaluation"]["returnRate"]).join("")}
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            <div class="box">
+                                                <div class="small_title"><img src="./img/lefttitle.png" alt=""><span>其他</span><img src="./img/righttitle.png" alt=""></div>
+                                                <div class="small_content" >${user6}</div>  
+                                            </div>
+                                        </div>
+                                </div>`)
+                }
+                var getHtml = `<div class=" carousel slide changeFirst" id="myCarousel" data-interval="2000" data-pause>
+                            <div class="carousel-inner">
+                                ${item.join("")}
+                            </div>
+                            <!-- 轮播（Carousel）导航 -->
+                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>`
+
+                $(".firstContent").html(getHtml)        
+                $('#myCarousel').carousel({
+                    interval: 5000,
+                    pause: 'hover'
+                })
+
+                           
+            }
+        })
+        $.ajax({
+            url:baseUrl+"/requirement/category",
+            type:"get",
+            success:function(getData){
+                var showData = getData.data
+                var selectArray = []
+                for(var i in showData){
+                    if(showData[i]["id"]){
+                        selectArray.push(`<option value="${showData[i]["id"]}">${showData[i]["name"]}</option>`)
+                    }
+                    
+                }  
+                $("#selectChoice").html(selectArray.join(""))
+                
+                $("#selectChoice").val(showData[0]["id"])
+            }
+        })
+        $.ajax({
+            url:baseUrl+"/requirement/category",
+            type:"get",
+            success:function(getData){
+                var showData = getData.data
+                var selectArray = []
+                for(var i in showData){
+                    if(showData[i]["id"]){
+                        selectArray.push(`<option value="${showData[i]["id"]}">${showData[i]["name"]}</option>`)
+                    }
+                    
+                }  
+                $("#selectChoice").html(selectArray.join(""))
+
+                $("#selectChoice").val(showData[0]["id"])
+            }
+        })
+        $.ajax({
+            url:baseUrl+"/logistics/getLogistisInfo",
+            type:"get",
+            success:function(getData){
+                var showData = getData.data
+                //  车牌号
+                $("#yunsong1").html(showData["transport"])
+                $("#yunsong2").html(showData["contact"])
+
+                $("#yunsong3").html(showData["startingPoint"])
+                $("#yunsong4").html(showData["deliveryStatus"])
+                $("#yunsong5").html(showData["deliveryTime"])
+
+                $("#yunsong6").html(showData["arrivalPoint"])
+                $("#yunsong7").html("已到达" || showData["deliveryStatus"])
+                $("#yunsong8").html(showData["arrivalTime"])
+            }
+        })
+        // $(".rightTwo .oneButton").click(function(){
+        //     $(".rightTwo .oneButton").removeClass("selectButton")
+        //     $(this).addClass("selectButton")
+        //     var selectId = $(this).attr("getId")
+        //     if(selectId == "1"){
+        //         $(".showTabel1").hide()
+        //         $(".showId").show()
+        //     }
+        //     if(selectId == "2"){
+        //         $(".showId").hide()
+        //         $(".showTabel1").show()
+        //     }
+        // })
+        $.ajax({
+            url:baseUrl+"/productionPlace/getProductionPlaceInfo",
+            type:"get",
+            success:function(getData){
+                var showData = getData.data
+                //  土壤
+                $(".placeName").html(showData["placeName"])
+                $("#chandi1").html(showData["temp"]+"℃")
+                $("#chandi2").html(showData["humidity"]+"%")
+                $("#chandi3").html(showData["illumination"]+"lux")
+
+
+                $("#chandi4").html(showData["soilTemp"]+"℃")
+                $("#chandi5").html(showData["soilHumidity"]+"%")
+                $("#chandi6").html(showData["soilConductivity"]+"us/cm")
+
+                $("#chandi7").html(showData["waterConductivity"]+"us/cm")
+                $("#chandi8").html(showData["phRange"]+"mol.l-1")
+                $("#chandione").html("供应预测"+showData["estimatedOutput"])          }
+        })
+        $.ajax({
+            url:baseUrl+"/requirement/sales/forecast",
+            type:"get",
+            success:function(getData){
+                var showData = getData.data
+                //  土壤
+                var tabelHtml = []
+                for(var i in showData){
+                    tabelHtml.push(`<tr><td>${showData[i]["productName"]}</td><td>${showData[i]["sales"]}</td></tr>`)
+                }
+                $(".tabelAfter").after(tabelHtml.join(""))          
+            }
+        })
+        Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份 
+            "d+": this.getDate(), //日 
+            "H+": this.getHours(), //小时 
+            "m+": this.getMinutes(), //分 
+            "s+": this.getSeconds(), //秒 
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+            "S": this.getMilliseconds() //毫秒 
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+        }
+        var time = new Date().Format("yyyy-MM-dd");
+        $(".todayShow").text(time+"日销售预测")
+    </script>
+</body>
+</html>

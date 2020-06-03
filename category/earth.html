@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>canvas { width: 100%; height: 100% }</style>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/OrbitControls.js"></script>
+    
+    <script src="./js/jquery.min.js"></script>
+    <style type="text/css">
+    html,body{
+        height: 100%;
+        margin:0;
+    }
+        #canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            background-color: #EEEEEE;
+        }
+        .posButton{
+            position: fixed;
+            top:20px;
+            left:30px;
+        }
+        .posButton button{
+            width: 120px;
+            height: 25px;
+            line-height: 20px;
+            text-align: center
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="posButton">
+    <button id="xadd">X+</button>
+    <button id="xdel">X-</button>
+    <button id="yadd">Y+</button>
+    <button id="ydel">Y-</button>
+    <button id="zadd">Z+</button>
+    <button id="zdel">Z-</button>
+    <button id="restar">restar</button>
+</div>
+<div id="canvas-frame"></div>
+<script type="text/javascript" src="./js/basicBox.js"></script>
+<script type="text/javascript" src="./js/earth.js"></script>
+<script>
+        var start = new Earth()
+        function freshCanvas(){
+            start.animation()
+            requestAnimationFrame( freshCanvas );
+        }
+        freshCanvas()
+        // 左上角单击事件
+        $(".posButton button").click(function(){
+            var jisuan = $(this).attr("id")
+            var oneNum = 100
+            start.moon.rotateOnAxis(new THREE.Vector3(1,1,1),Math.PI/8);
+
+            // if(jisuan == "xadd"){
+            //     start.camera.position.x += oneNum;
+            // }
+            // if(jisuan == "xdel"){
+            //     start.camera.position.x -= oneNum;
+            // }
+            // if(jisuan == "yadd"){
+            //     start.camera.position.y += oneNum;
+            // }
+            // if(jisuan == "ydel"){
+            //     start.camera.position.y -= oneNum;
+            // }
+            // if(jisuan == "zadd"){
+            //     start.camera.position.z += oneNum;
+            // }
+            // if(jisuan == "zdel"){
+            //     start.camera.position.z -= oneNum;
+            // }
+            // if(jisuan == "restar"){
+            //     start.camera.position.x = 1000;
+            //     start.camera.position.y = 1000;
+            //     start.camera.position.z = 2000;
+            // }
+            
+        })
+
+        
+    </script>
+</body>
+
+
+</html>
